@@ -1,0 +1,46 @@
+<div class="d-flex align-items-center h-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-5">
+        
+        <div class="example-container mat-elevation-z4">
+ 
+  
+  <div class="example-loading-shade"
+        *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+ 
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="registartionForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="User Name" formControlName="username"
+                [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!registartionForm.get('username').valid && registartionForm.get('username').touched">Please enter Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password"  type="password" formControlName="password"
+                [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!registartionForm.get('password').valid && registartionForm.get('password').touched">Please enter Name</span>
+        </mat-error>
+      </mat-form-field>
+     
+      <div class="button-row">
+        <button type="submit" [disabled]="!registartionForm.valid" mat-raised-button color="primary">Login<mat-icon>login</mat-icon></button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+</div>
+</div>
+</div>
+</div>
+

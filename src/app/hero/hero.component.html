@@ -1,0 +1,80 @@
+
+    <div class="example-container mat-elevation-z8">
+        <h2>Search By Date Range</h2>
+        <div class="button-row">
+          <a mat-flat-button color="primary" [routerLink]="['/home']"><mat-icon>list</mat-icon></a>
+        </div>
+        <div class="example-loading-shade"
+             *ngIf="isLoadingResults">
+          <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        </div>
+      
+        
+        <div class="button-row" fxLayout="row" fxLayoutAlign="center" >
+      
+          <mat-card class="card">
+          
+          <mat-form-field class="example-full-width" style="margin-right:.9em" >
+            <mat-label>Choose Start date</mat-label>
+            <input matInput [matDatepicker]="picker"  (click)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field class="example-full-width" style="margin-right:.9em" >
+      
+            <mat-label>Choose End date</mat-label>
+            <input matInput [matDatepicker]="picker2" (click)="picker2.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker2></mat-datepicker>
+          </mat-form-field>
+          <button color="primary" [class.spinner]="isLoadingResults" [disabled]="isLoadingResults" (click)="getItemDetails()" mat-mini-fab>
+            <mat-icon>search</mat-icon>
+          </button>
+       
+      
+        <div class="mat-elevation-z8" [ngClass]="{'show': isItemPresent==false}">
+            
+            <table mat-table matSort [dataSource]="dataSource" class="table"  *ngIf="isItemPresent" >
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                    <td mat-cell *matCellDef="let rowObj"> {{rowObj.id}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let rowObj"> {{rowObj.description}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="quantity">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Full name </th>
+                    <td mat-cell *matCellDef="let rowObj"> {{rowObj.quantity}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="dcinvoiceNo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Place Of Birth </th>
+                    <td mat-cell *matCellDef="let rowObj"> {{rowObj.dcinvoiceNo}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="supplierName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Publisher </th>
+                    <td mat-cell *matCellDef="let rowObj"> {{rowObj.supplierName}} </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator #paginator [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[2, 3, 5]" >
+            </mat-paginator>
+    
+        </div>
+      
+      
+      </mat-card>
+      </div>
+      </div>
+      
+      
+   
+   

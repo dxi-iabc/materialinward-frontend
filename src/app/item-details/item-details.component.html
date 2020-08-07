@@ -1,0 +1,55 @@
+<div class="example-container mat-elevation-z8">
+  <h2>Item Details<span style="float:right">Hello,{{userName}} </span></h2>
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/home']"><mat-icon>list</mat-icon></a>
+  </div>
+  <mat-card class="example-card" *ngIf="item">
+    <mat-card-header>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <dt><b>Description:</b><em>{{item.description}}</em></dt>
+       
+        <dt><b>Quantity:</b><em>{{item.quantity}}</em></dt>
+      
+        <dt><b>Invoice No:</b><em>{{item.dcinvoiceNo}}</em></dt>
+   
+        <dt><b>Supplier Name:</b><em>{{item.supplierName}}</em></dt>
+         
+        <dt><b>Make:</b><em>{{item.make}}</em></dt>
+
+        <dt><b>Model:</b><em>{{item.model}}</em></dt>
+         
+        <dt><b>Serial#:</b><em>{{item.serialNo}}</em></dt>
+
+        <dt><b>Category:</b><em>{{formatDisplay(item.category)}}</em></dt>
+              
+        <dt><b>BroughtBy:</b><em>{{item.broughtBy}}</em></dt>
+
+        <dt><b>Received By:</b><em>{{item.receivedBy}}</em></dt>
+
+        <dt><b>Accessories:</b><em>{{item.accessories}}</em></dt>
+
+        <dt><b>OtherDetails:</b><em>{{item.otherDetails}}</em></dt>
+
+        <dt><b>Interoffice Transfer:</b><em>{{item.interOfficeTransfer}}</em></dt>
+    
+        <dt><b>Security Name:</b><em>{{item.securityName}}</em></dt>
+      
+        <dt><b>Remarks:</b><em>{{item.remarks}}</em></dt>
+     
+      </dl>
+
+
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-flat-button color="primary" [routerLink]="['/edit-item', item.id]"><mat-icon>edit</mat-icon> Items</a>
+      <a mat-flat-button color="warn" (click)="deleteItem( item.dcinvoiceNo)"><mat-icon>delete</mat-icon> Delete</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
